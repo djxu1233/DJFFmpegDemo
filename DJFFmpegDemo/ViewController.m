@@ -11,6 +11,7 @@
 #import "ffmpeg.h"
 #import "DJAVPlayerView.h"
 #import "Masonry.h"
+#import "DJAVPlayerHeader.h"
 
 @interface ViewController ()
 
@@ -36,18 +37,18 @@
 }
 
 - (void)setupAVPlayer {
-    CGFloat playerW = [UIScreen mainScreen].bounds.size.width;
+
     DJAVPlayerView *playerView = [[DJAVPlayerView alloc] init];
     _playerView = playerView;
-//    playerView.frame = CGRectMake(0, 0, playerW, playerW / 7 * 4);
+//    playerView.frame = CGRectMake(0, 0, DefaultPlayerW, DefaultPlayerH);
     
     [self.view addSubview:_playerView];
     
     [playerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
         make.left.equalTo(self.view.mas_left);
-        make.width.mas_equalTo(playerW);
-        make.height.mas_equalTo(playerW / 7 * 4);
+        make.width.mas_equalTo(DefaultPlayerW);
+        make.height.mas_equalTo(DefaultPlayerH);
     }];
     
     NSString *moviPath = [[NSBundle mainBundle] pathForResource:@"movie" ofType:@"mp4"];

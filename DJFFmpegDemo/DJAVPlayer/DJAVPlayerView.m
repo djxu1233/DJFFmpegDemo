@@ -8,6 +8,7 @@
 
 #import "DJAVPlayerView.h"
 #import "Masonry.h"
+#import "DJAVPlayerHeader.h"
 
 @interface DJAVPlayerView ()
 
@@ -145,8 +146,8 @@
     self.controlView.shrinkScreenBtn.hidden = YES;
     
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width);
-        make.height.mas_equalTo([UIScreen mainScreen].bounds.size.width / 7 * 4);
+        make.width.mas_equalTo(DefaultPlayerW);
+        make.height.mas_equalTo(DefaultPlayerH);
     }];
     
 //    self.frame = _shrinkRect;

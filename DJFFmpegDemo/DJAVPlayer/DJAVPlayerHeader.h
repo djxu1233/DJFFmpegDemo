@@ -18,4 +18,7 @@
 #define SliderH 3
 #define SlipW 10
 
+#define DefaultPlayerW [UIScreen mainScreen].bounds.size.width
+#define DefaultPlayerH [UIScreen mainScreen].bounds.size.width / 7 * 4
+
 #endif /* DJAVPlayerHeader_h */
