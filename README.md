@@ -1,2 +1,2 @@
 # DJFFmpegDemo
-An iOS demo use by FFmpeg
+An example of iOS using FFmpeg third-party library
