@@ -31,6 +31,7 @@
 }
 
 - (void)configUI {
+    // alloc init
     self.topView = [[UIView alloc] init];
     self.topView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     
@@ -70,6 +71,7 @@
     self.playerSlider = [[DJAVPlayerSlider alloc] init];
     self.playerSlider.finishValue = 0;
     
+    //add subviews
     [self addSubview:self.topView];
     [self.topView addSubview:self.titleLab];
     [self.topView addSubview:self.closeBtn];
@@ -113,14 +115,12 @@
     
     [self.playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.bottomView.mas_left).mas_offset(10);
-//        make.bottom.equalTo(self.bottomView.mas_bottom);
         make.centerY.equalTo(self.bottomView.mas_centerY);
         make.width.height.mas_equalTo(TopMenuH);
     }];
     
     [self.pauseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.bottomView.mas_left).mas_offset(10);
-//        make.bottom.equalTo(self.bottomView.mas_bottom);
         make.centerY.equalTo(self.bottomView.mas_centerY);
         make.width.height.mas_equalTo(TopMenuH);
     }];
@@ -175,8 +175,7 @@
     }
 }
 
-- (void)controlViewTapGRAction:(UITapGestureRecognizer *)tapGR
-{
+- (void)controlViewTapGRAction:(UITapGestureRecognizer *)tapGR {
     //暂停定时器
     [self.timer setFireDate:[NSDate distantFuture]];
     self.timerIndex = 0;
@@ -210,7 +209,6 @@
         self.menuShow = NO;
         self.isAnimate = NO;
         
-        NSLog(@"hide topView === %@ bottomView === %@", self.topView, self.bottomView);
     }];
 }
 
@@ -224,8 +222,6 @@
     [UIView animateWithDuration:0.25 animations:^{
         [self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.mas_top);
-//            make.height.mas_equalTo(TopMenuH);
-//            make.bottom.equalTo(self.mas_top).mas_offset(TopMenuH);
         }];
         [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.mas_bottom);
@@ -237,7 +233,6 @@
         //恢复定时器
         [self.timer setFireDate:[NSDate distantPast]];
         
-        NSLog(@"topView ====%@ bottomVIew ===%@", self.topView, self. bottomView);
     }];
 }
 

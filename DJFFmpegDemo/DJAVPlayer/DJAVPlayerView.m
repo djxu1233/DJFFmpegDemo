@@ -101,9 +101,11 @@
 
 - (void)addNotification {
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    
+    //监听屏幕旋转
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationHandler) name:UIDeviceOrientationDidChangeNotification object:nil];
+    //监听进入前台
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+    //监听失去焦点，进入后台
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignAction) name:UIApplicationWillResignActiveNotification object:nil];
     
 }
@@ -211,6 +213,7 @@
     [self.avPlayer removeTimeObserver:self.timeObserver];
 }
 
+#pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     AVPlayerItem *avPlayerItem = object;
     
@@ -317,7 +320,7 @@
     //注销通知
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.avPlayer = nil;
+//    self.avPlayer = nil;
 }
 
 
